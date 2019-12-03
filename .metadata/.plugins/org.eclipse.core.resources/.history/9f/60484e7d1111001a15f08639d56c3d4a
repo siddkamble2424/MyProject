@@ -1,0 +1,36 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class UserDao {
+
+	public static Connection getConnection()
+		{
+			Connection con= null;
+			try
+			{
+				Class.forName("com.mysql.jdbc.Driver");
+				System.out.println("Driver Found");
+				con = DriverManager.
+			getConnection("jdbc:mysql://192.168.100.26:3306/group001","group001","welcome");
+				System.out.println("Connection Established");
+			}catch (Exception u) {
+				// TODO: handle exception
+				System.out.println(u);
+			}
+			return con;
+		}
+
+	public static boolean validate(User u) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static int save(User u) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+		
+		
+	
+
+}

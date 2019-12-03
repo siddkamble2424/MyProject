@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <style> 
+ body{
+  background-image: url("Images/landscape_book_4k.jpg" );
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  padding: 15px;
+  }
+  
+  button {
+  background-color: #4CAF50;
+  color: white;
+ 
+ 
+  border: none;
+  cursor: pointer;
+  
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+button:hover {
+  opacity: 0.8;
+}
+  
+</style>
+</head>
+<body  >
+
+<div class=" text-center">
+  <h1 ><marquee><b>BOOK STORE</b> </marquee></h1></div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+   
+
+<form action="LoginServlet" method="post">
+    <div class="form-group">
+      <label for="UserName"><font color="white"><h4><b>Username:</b></h4></font></label>
+      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="pwd"><font color="white"><h4><b>Password:</b></h4></font></label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"><font color="white"> Remember me </font></label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button> 
+    
+  </form>
+  <br>
+  <button onclick="window.location.href='register.jsp';">Register</button>
+  <a href="Forgot Password" ></a>
+
+</div>
+
+</div>
+ </div>
+    
+
+</body>
+</html>

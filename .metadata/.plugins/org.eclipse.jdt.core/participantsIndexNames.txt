@@ -1,0 +1,5 @@
+INDEX VERSION 1.130
+Z:\Java2\project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\353841146.index
+\BookStore\src
+Z:\Java2\project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3344639844.index
+\MyProject\src

@@ -1,0 +1,86 @@
+package com.books;
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class register
+ */
+public class registerServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public registerServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	
+	
+		response.setContentType("text/html");
+		PrintWriter pw = response.getWriter();
+		String uname = request.getParameter("name");
+		String upwd = request.getParameter("password");
+		String email = request.getParameter("email");
+		String address = request.getParameter("address");
+		String number = request.getParameter("number");
+		
+		
+		User u = new User();
+		u.setName(uname);
+		u.setPassword(upwd);
+		u.setEmail(email);
+		u.setAddress(address);
+		u.setNumber(number);
+		
+		try {
+			int status = UserDao.save(u);
+			
+			if(status > 0)
+			{
+             pw.write("Registration Done...Now Please Login to Enjoy Our Services");
+             request.getRequestDispatcher("index.html").include(request, response);
+			}
+			else
+			{
+				pw.write("Registration Failed.. Try Again..");
+				request.getRequestDispatcher("register.jsp")
+				.include(request, response);
+
+			}	
+		}	catch(SQLException u1)
+		{
+			
+			u1.printStackTrace();
+		}
+	}	
+		
+	
+	
+	
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

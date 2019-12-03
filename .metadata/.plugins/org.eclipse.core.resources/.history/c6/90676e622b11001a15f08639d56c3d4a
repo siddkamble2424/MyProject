@@ -1,0 +1,65 @@
+package com.books;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class UserDao {
+
+	public static Connection getConnection()
+		{
+			Connection con= null;
+
+			try
+			{
+				Class.forName("com.mysql.jdbc.Driver");
+				System.out.println("Driver Found");
+				
+				con=DriverManager.getConnection("jdbc:mysql://192.168.100.26:3306/group001","group001","welcome");
+				System.out.println("Connection Estblished");
+				
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+				System.out.println("Driver Not Found");
+			}
+			return con;
+		}
+	
+ 	
+
+	public static int save(User u)throws SQLException {
+		Connection con=UserDao.getConnection();
+		System.out.println("Email : "+u.getEmail());
+		PreparedStatement pstmt=con.prepareStatement("insert into client2(name, password, email, address, number) values(?,?,?,?,?");
+		pstmt.setString (1,u.getName());
+		pstmt.setString (2,u.getPassword());
+		pstmt.setString (3,u.getEmail());
+		pstmt.setString (4,u.getAddress());
+		pstmt.setString (5,u.getNumber());
+		
+		int ans = pstmt.executeUpdate();
+		return ans;
+		
+		
+	
+	}
+	
+	public static boolean validate(User u)throws SQLException
+		{
+			Connection con=UserDao.getConnection();
+			PreparedStatement pstmt=con.prepareStatement("select *from client2 where uname=?" +", password=?"+",Email=?"+",Address=?"+"and number=?");
+				pstmt.setString(1,u.getName());
+				pstmt.setString(2,u.getPassword());
+				pstmt.setString(3,u.getEmail());
+				pstmt.setString(4,u.getAddress());
+				pstmt.setString(5,u.getNumber());
+				
+				ResultSet rs=pstmt.executeQuery();
+				boolean status=rs.next();
+				return status;			
+	}
+
+}
